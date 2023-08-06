@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto+Condensed:wght@400;700&display=swap");
+
+#app {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+    background-color: #ddd;
+    background-image: url("https://images.pexels.com/photos/921294/pexels-photo-921294.png");
+    background-position: center;
+    background-size: cover;
+    font-family: "Roboto Condensed", sans-serif;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#app:after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(200, 200, 200, 0.7);
+}
+.app-title {
+    position: relative;
+    z-index: 3;
+    font-weight: 800;
+    font-size: 55px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 25px;
+    padding: 0 40px;
+    font-family: "Oswald", sans-serif;
+    /* text-shadow: 0 5px 5px rgba(0, 0, 0, 0.1); */
+}
+.app-title  img {
+    height: 60px;
+    margin-right: 15px;
+}
+.calc-window {
+    position: relative;
+    z-index: 2;
+    width: 800px;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 40px;
+    display: flex;
+}
+.title {
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+.pre-calc {
+    width: 50%;
+    padding-left: 30px;
+}
+.total-calc {
+    width: 50%;
+    padding-right: 30px;
+}
+.calc {
+    margin-top: 30px;
+}
+.accordion-button:after {
+    width: 22px;
+    background-size: 100%;
+    background-image: url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-256.png") !important;
+    opacity: 0.7;
+}
+.form .form-field {
+    margin-bottom: 10px;
+}
+.form .form-field:last-child {
+    margin-bottom: 0;
+}
+.form .form-action .btn {
+    margin-bottom: 5px;
+}
+
+@media (max-width: 900px) {
+    .calc-window {
+        width: 100%;
+    }
+}
+@media (max-width: 600px) {
+    #app {
+        padding: 15px;
+    }
+    .app-title {
+        font-size: 30px;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .app-title img {
+        height: 35px;
+    }
+    .calc-window {
+        flex-direction: column-reverse;
+    }
+    .pre-calc {
+        margin-bottom: 30px;
+        width: 100%;
+        padding: 0;
+        border: 0;
+    }
+    .total-calc {
+        width: 100%;
+        padding: 0;
+    }
+}
