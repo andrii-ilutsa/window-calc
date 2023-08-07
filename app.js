@@ -57,7 +57,7 @@ $hemisphereAreaButton.addEventListener('click', event => {
         $hemisphereRadiusField.classList.add('is-invalid')
     } else {
         resetFieldsAlerts();
-        s = 9.42 * $hemisphereRadiusField.value;
+        s = 9.42 * Math.pow($hemisphereRadiusField.value, 2);
         updateAreaField(s);
     }
 });
@@ -100,7 +100,7 @@ $totalCostButton.addEventListener('click', event => {
         let x = (s / 100) * c;
         let a = config.windowType[$windowTypeField.value];
 
-        let e = (x * a * 1.3 + (s - x) * config.windowPrice * 1.3 + Math.sqrt(b) * 4 * n * config.salary + n * config.rent) * 2 * 1.1;
+        let e = (x * a * 1.3 + (s - x) * config.windowPrice * 1.3 + Math.sqrt(b) * 4 * n * config.linearMeterPrice + (n / 10) + n * config.salary + n * config.rent) * 2 * 1.1;
 
         updateTotalAreaCostField(e);
     }
