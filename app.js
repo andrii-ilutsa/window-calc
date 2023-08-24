@@ -116,7 +116,7 @@ $totalCostButton.addEventListener('click', event => {
             $windowTypesList.classList.add('is-invalid');
         } else {
             $windowTypesList.classList.remove('is-invalid');
-            let e = (totalWindowsCalcRes + Math.sqrt(b) * 4 * n * config.linearMeterPrice + (n / 10) + n * config.salary + n * config.rent) * 2 * 1.1;
+            let e = (totalWindowsCalcRes + Math.sqrt(b) * 4 * n * config.linearMeterPrice + (n / 10) + n * config.salary + n * config.rent) * 2 * config.totalFactor;
             updateTotalAreaCostField(e);
         }
 
