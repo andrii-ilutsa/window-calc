@@ -18,10 +18,10 @@ const $totalAreaCostField        = document.querySelector('#totalAreaCostField')
 const $totalAreaCostByMeterField = document.querySelector('#totalAreaCostByMeterField');
 const $totalAreaField            = document.querySelector('#totalAreaField');
 const $detailsCountField         = document.querySelector('#detailsCountField');
-const $areaColorGlassField       = document.querySelector('#areaColorGlassField');
 const $windowTypeField           = document.querySelector('#windowTypeField');
 const $totalCostButton           = document.querySelector('#totalCostButton');
 const $resetFormButton           = document.querySelector('#resetFormButton');
+const $windowTypesList           = document.querySelector('.window-types-list');
 
 let s = 0;
 
@@ -37,6 +37,17 @@ function resetFieldsAlerts() {
         element.classList.remove('is-invalid');
     });
 }
+
+let template = '';
+for (key in config.windowType) {
+    template += '<div class="form-field input-group">' +
+                    '<label class="input-group-text">' + key + '</label>' +
+                    '<input id="' + key + '" type="number" class="form-control" value="0">' +
+                    '<label class="input-group-text">%</label>' +
+                '</div>';
+}
+$windowTypesList.innerHTML = template;
+            
 
 $squareAreaButton.addEventListener('click', event => {
     if (!$squareWidthField.value || !$squareHeightField.value) {
@@ -80,29 +91,36 @@ $halfCircleAreaButton.addEventListener('click', event => {
     }
 });
 $totalCostButton.addEventListener('click', event => {
-    if ($totalAreaField.value == 0 || !$detailsCountField.value || !areaColorGlassField.value) {
+    if ($totalAreaField.value == 0 || !$detailsCountField.value) {
         ($totalAreaField.value == 0)
             ? $totalAreaField.classList.add('is-invalid')
             : $totalAreaField.classList.remove('is-invalid');
         (!$detailsCountField.value)
             ? $detailsCountField.classList.add('is-invalid')
             : $detailsCountField.classList.remove('is-invalid');
-        (!$areaColorGlassField.value)
-            ? $areaColorGlassField.classList.add('is-invalid')
-            : $areaColorGlassField.classList.remove('is-invalid');
     } else {
         resetFieldsAlerts();
 
         let n = $detailsCountField.value;
-        let c = $areaColorGlassField.value;
-
         let b = s / n;
-        let x = (s / 100) * c;
-        let a = config.windowType[$windowTypeField.value];
 
-        let e = (x * a * 1.3 + (s - x) * config.windowPrice * 1.3 + Math.sqrt(b) * 4 * n * config.linearMeterPrice + (n / 10) + n * config.salary + n * config.rent) * 2 * 1.1;
+        let totalWindowsCalcRes = 0;
+        let totalWindowsCalcPersent = 0;
+        for (key in config.windowType) {
+            let c = document.querySelector('#' + key).value;
+            totalWindowsCalcPersent += parseFloat(c);
+            totalWindowsCalcRes += ((s / 100) * c) * config.windowType[key] * 1.3;
+        }
 
-        updateTotalAreaCostField(e);
+        if (totalWindowsCalcPersent > 100) {
+            $windowTypesList.classList.add('is-invalid');
+        } else {
+            $windowTypesList.classList.remove('is-invalid');
+            let e = (totalWindowsCalcRes + Math.sqrt(b) * 4 * n * config.linearMeterPrice + (n / 10) + n * config.salary + n * config.rent) * 2 * 1.1;
+            updateTotalAreaCostField(e);
+        }
+
+
     }
 });
 $resetFormButton.addEventListener('click', event => {

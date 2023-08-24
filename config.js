@@ -6,6 +6,7 @@ const config = {
     windowType: {
         standart:     40,   //
         wissmach:     85,   // Виды стекол
-        spectrum:     150   //
+        spectrum:     150,  //
+        spectrumPlus: 240   //
     }
 }

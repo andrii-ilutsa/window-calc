@@ -54,19 +54,10 @@
                                 <label class="input-group-text">$</label>
                                 <div class="invalid-feedback">Введите значение</div>
                             </div>
-                            <div class="form-field input-group has-validation">
-                                <label class="input-group-text">S цвет. стекла</label>
-                                <input id="areaColorGlassField" type="number" class="form-control">
-                                <label class="input-group-text">%</label>
-                                <div class="invalid-feedback">Введите значение</div>
-                            </div>
-                            <div class="form-field input-group">
-                                <label class="input-group-text">Вид стекла</label>
-                                <select id="windowTypeField" class="form-select">
-                                    <option value="standart">Стандарт</option>
-                                    <option value="wissmach">Wissmach</option>
-                                    <option value="spectrum">Spectrum</option>
-                                </select>
+                            <label class="form-label">S цвет. стекла</label>
+                            <div class="form-field">
+                                <div class="window-types-list"></div>
+                                <div class="invalid-feedback">Сумма <strong>S</strong> не может превышать 100%</div>
                             </div>
                             <div class="form-action">
                                 <a id="totalCostButton" class="btn btn-primary">Рассчитать стоимость</a>

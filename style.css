@@ -73,7 +73,7 @@
     background-image: url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-256.png") !important;
     opacity: 0.7;
 }
-.form .form-field {
+.form .form-field, .window-types-list {
     margin-bottom: 10px;
 }
 .form .form-field:last-child {
@@ -98,7 +98,7 @@
         margin-bottom: 20px;
     }
     .app-title img {
-        height: 35px;
+        height: 70px;
     }
     .calc-window {
         flex-direction: column-reverse;
